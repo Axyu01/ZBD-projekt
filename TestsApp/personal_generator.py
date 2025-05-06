@@ -4126,12 +4126,34 @@ class PersonalGenerator:
 
         return ''.join(str(d) for d in pesel_digits)
     
+    def generate_nip(self):
+        weights = [6, 5, 7, 2, 3, 4, 5, 6, 7]
+        while True:
+            digits = [random.randint(0, 9) for _ in range(9)]
+            checksum = sum(w * d for w, d in zip(weights, digits)) % 11
+            if checksum < 10:
+                digits.append(checksum)
+                nip_str = ''.join(str(d) for d in digits)
+                return f"{nip_str[:3]}-{nip_str[3:6]}-{nip_str[6:8]}-{nip_str[8:]}"
+            
+    def generate_iban(self):
+        country_code = 'PL'
+        nrb = ''.join(str(random.randint(0, 9)) for _ in range(24))
+        numeric_iban = nrb + '252100'
+        checksum = 98 - (int(numeric_iban) % 97)
+        checksum_str = f"{checksum:02d}"
+        raw_iban = f"{country_code}{checksum_str}{nrb}"
+        formatted_iban = ' '.join(raw_iban[i:i+4] for i in range(0, len(raw_iban), 4))
+        return formatted_iban
+    
     def get_personal_data(self):
         self.get_sex()
         return Person(
             self.get_first_name(),
             self.get_last_name(),
             self.get_birth_date(),
-            self.generate_pesel()
+            self.generate_pesel(),
+            self.generate_nip(),
+            self.generate_iban()
         )
 

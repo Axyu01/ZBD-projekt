@@ -22,6 +22,10 @@ def interpret_type(type_str, person, adress):
         return person.birth_date
     elif lower == "pesel":
         return person.pesel
+    elif lower == "nip":
+        return person.nip
+    elif lower == "iban":
+        return person.iban
     elif lower == "street":
         return adress.street
     elif lower == "house_number":

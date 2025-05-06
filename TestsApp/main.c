@@ -5,7 +5,9 @@
 
 int main()
 {
-    const char *type_hints[] = {"first_name", "last_name", "birth_date", "pesel", "street", "house_number", "city", "postal_code", "integer", "float", "bool", "date", "string", "unknown_type"};
+    const char *type_hints[] = {"first_name", "last_name", "birth_date", "pesel", "nip", "iban",
+                                "street",
+                                "house_number", "city", "postal_code", "integer", "float", "bool", "date", "string", "unknown_type"};
     int count = sizeof(type_hints) / sizeof(type_hints[0]);
     int num_arrays = 3; // Specify the number of arrays to generate
     int out_size = 0;
