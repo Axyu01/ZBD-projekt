@@ -4083,8 +4083,8 @@ class PersonalGenerator:
     
     # wiek
     def get_birth_date(self):
-        self.birth_date = date(random.randint(1900, 2025), random.randint(1,12), random.randint(1,31))
-        return self.birth_date
+        self.birth_date = date(random.randint(1900, 2025), random.randint(1,12), random.randint(1,28))
+        return self.birth_date.strftime('%Y-%m-%d')
 
     # pesel
     def get_month_code(self, year, month):
@@ -4127,18 +4127,11 @@ class PersonalGenerator:
         return ''.join(str(d) for d in pesel_digits)
     
     def get_personal_data(self):
-        pp.get_sex()
+        self.get_sex()
         return Person(
             self.get_first_name(),
             self.get_last_name(),
-            self.get_birth_date(), # trzeba dopracować date żeby nie pojawiały sie np 31.06
+            self.get_birth_date(),
             self.generate_pesel()
         )
-
-    
-
-pp = PersonalGenerator()
-
-person = pp.get_personal_data()
-print(person.to_string())
 

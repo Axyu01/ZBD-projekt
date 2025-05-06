@@ -1,7 +1,7 @@
 import random
 from adress import Adress
 
-class AdressProvider:
+class AdressGenerator:
     cities_size = 199
     regions_size = 15
     street_prfx_size = 2
@@ -645,11 +645,3 @@ class AdressProvider:
         adress.city = city_with_postal_code[0]
         adress.postal_code = city_with_postal_code[1]
         return adress
-
-ap = AdressProvider()
-list = []
-for i in range(5):
-    list.append(ap.get_adress())
-
-for i in range(5):
-    print(list[i].to_string())
