@@ -5,7 +5,7 @@
 
 int main()
 {
-    const char *type_hints[] = {"first_name", "last_name", "birth_date", "pesel", "nip", "iban",
+    const char *type_hints[] = {"id", "first_name", "last_name", "birth_date", "pesel", "nip", "iban",
                                 "street",
                                 "house_number", "city", "postal_code", "integer", "float", "bool", "date", "string", "unknown_type"};
     int count = sizeof(type_hints) / sizeof(type_hints[0]);
